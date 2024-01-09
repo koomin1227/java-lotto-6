@@ -2,6 +2,10 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class Input {
     public static int inputPrice() {
         while (true) {
@@ -14,6 +18,12 @@ public class Input {
                 printError(e.getMessage());
             }
         }
+    }
+
+    public static List<String> inputWinningNumbers() {
+        System.out.println("당첨 번호를 입력해 주세요.");
+        String input = Console.readLine();
+        return new ArrayList<>(Arrays.asList(input.split(",")));
     }
 
     private static void printError(String message) {
