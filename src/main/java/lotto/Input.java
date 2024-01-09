@@ -25,10 +25,6 @@ public class Input {
         return Console.readLine();
     }
 
-    public static void printError(String message) {
-        System.out.printf("[ERROR] %s\n", message);
-    }
-
     private static void validatePrice(String input) {
         if (!isNumeric(input)) {
             throw new IllegalArgumentException("숫자로만 이루어져있지 않음");

@@ -13,7 +13,7 @@ public class LottoController {
                 lottoCount = price / 1000;
                 return;
             } catch (IllegalArgumentException e) {
-                Input.printError(e.getMessage());
+                Output.printError(e.getMessage());
             }
         }
     }
