@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.HashSet;
 import java.util.List;
 
 public class Lotto {
@@ -14,6 +15,14 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
+        if (isDouble(numbers)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private boolean isDouble(List<Integer> numbers) {
+        HashSet<Integer> numbersSet = new HashSet<>(numbers);
+        return numbersSet.size() != numbers.size();
     }
 
     // TODO: 추가 기능 구현
