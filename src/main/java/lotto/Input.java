@@ -8,16 +8,10 @@ import java.util.List;
 
 public class Input {
     public static int inputPrice() {
-        while (true) {
-            System.out.println("구입금액을 입력해 주세요.");
-            String input = Console.readLine();
-            try {
-                validatePrice(input);
-                return Integer.parseInt(input);
-            } catch (IllegalArgumentException e) {
-                printError(e.getMessage());
-            }
-        }
+        System.out.println("구입금액을 입력해 주세요.");
+        String input = Console.readLine();
+        validatePrice(input);
+        return Integer.parseInt(input);
     }
 
     public static List<String> inputWinningNumbers() {
@@ -31,7 +25,7 @@ public class Input {
         return Console.readLine();
     }
 
-    private static void printError(String message) {
+    public static void printError(String message) {
         System.out.printf("[ERROR] %s\n", message);
     }
 
