@@ -26,6 +26,11 @@ public class Input {
         return new ArrayList<>(Arrays.asList(input.split(",")));
     }
 
+    public static String inputBonusNumber() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        return Console.readLine();
+    }
+
     private static void printError(String message) {
         System.out.printf("[ERROR] %s\n", message);
     }
