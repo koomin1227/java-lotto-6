@@ -1,7 +1,7 @@
 package lotto;
 
 import lotto.Domain.Lotto;
-import lotto.Util.Numbers;
+import lotto.Domain.LottoMachine;
 import lotto.Domain.WinningNumbers;
 import lotto.Util.Parser;
 import lotto.View.Input;
@@ -10,9 +10,8 @@ import lotto.View.Output;
 import java.util.ArrayList;
 
 public class LottoController {
-    private int lottoCount = 0;
+    private LottoMachine lottoMachine;
     private WinningNumbers winningNumbers;
-    private final ArrayList<Lotto> lottos = new ArrayList<>();
     public void run() {
         createLottoCount();
         createLotto();
@@ -21,10 +20,7 @@ public class LottoController {
     }
 
     private void createLotto() {
-        for (int i = 0; i < lottoCount; i++) {
-            ArrayList<Integer> numbers = Numbers.createNumbers();
-            lottos.add(new Lotto(numbers));
-        }
+        ArrayList<Lotto> lottos = lottoMachine.publishLotto();
         Output.printLotto(lottos);
     }
 
@@ -32,7 +28,7 @@ public class LottoController {
         while (true) {
             try {
                 int price = Input.inputPrice();
-                lottoCount = price / 1000;
+                this.lottoMachine = new LottoMachine(price);
                 return;
             } catch (IllegalArgumentException e) {
                 Output.printError(e.getMessage());
