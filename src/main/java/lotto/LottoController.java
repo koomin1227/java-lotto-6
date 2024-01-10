@@ -1,7 +1,13 @@
 package lotto;
 
+import lotto.Domain.Lotto;
+import lotto.Domain.Number;
+import lotto.Domain.Numbers;
+import lotto.Domain.WinningNumbers;
+import lotto.View.Input;
+import lotto.View.Output;
+
 import java.util.ArrayList;
-import java.util.List;
 
 public class LottoController {
     private int lottoCount = 0;
@@ -11,6 +17,7 @@ public class LottoController {
         createLottoCount();
         createLotto();
         createWinningNumbers();
+        createBonusNumber();
     }
 
     private void createLotto() {
@@ -43,6 +50,17 @@ public class LottoController {
                 Output.printError(e.getMessage());
             }
         }
+    }
 
+    private void createBonusNumber() {
+        while (true) {
+            try {
+                String input = Input.inputBonusNumber();
+                this.winningNumbers.setBonusNumber(input);
+                return;
+            } catch (IllegalArgumentException e) {
+                Output.printError(e.getMessage());
+            }
+        }
     }
 }
