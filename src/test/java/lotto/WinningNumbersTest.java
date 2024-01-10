@@ -10,34 +10,53 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class WinningNumbersTest {
-    @Test
-    void 숫자가_아닌_문자가_있는_경우_오류() {
-        String[] input = {"12", "8", "a123", "3", "5", "35"};
-        ArrayList<String> inputs = new ArrayList<>(Arrays.asList(input));
-        assertThatThrownBy(() -> new WinningNumbers(inputs))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
 
     @Test
     void 숫자의_범위가_넘는_경우_오류() {
-        String[] input = {"12", "8", "50", "3", "5", "35"};
-        ArrayList<String> inputs = new ArrayList<>(Arrays.asList(input));
+        Integer[] input = {1,2,3,4,5,50};
+        ArrayList<Integer> inputs = new ArrayList<>(Arrays.asList(input));
         assertThatThrownBy(() -> new WinningNumbers(inputs))
                 .isInstanceOf(IllegalArgumentException.class);
     }
     @Test
     void 중복되는_경우_오류() {
-        String[] input = {"12", "8", "12", "3", "5", "35"};
-        ArrayList<String> inputs = new ArrayList<>(Arrays.asList(input));
+        Integer[] input = {1,2,3,4,5,5};
+        ArrayList<Integer> inputs = new ArrayList<>(Arrays.asList(input));
+        assertThatThrownBy(() -> new WinningNumbers(inputs))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 개수가_6이_아닌_경우_오류() {
+        Integer[] input = {1,2,3,4,5};
+        ArrayList<Integer> inputs = new ArrayList<>(Arrays.asList(input));
         assertThatThrownBy(() -> new WinningNumbers(inputs))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void 당첨번호_반환() {
-        String[] input = {"12", "8", "45", "3", "5", "35"};
-        ArrayList<String> inputs = new ArrayList<>(Arrays.asList(input));
+        Integer[] input = {1,2,3,4,5,6};
+        ArrayList<Integer> inputs = new ArrayList<>(Arrays.asList(input));
         WinningNumbers winningNumbers = new WinningNumbers(inputs);
-        assertThat(winningNumbers.getWinningNumbers().size()).isEqualTo(6);
+        assertThat(winningNumbers.getNumbers().size()).isEqualTo(6);
+    }
+
+    @Test
+    void 보너스_번호의_범위가_넘는경우_오류() {
+        Integer[] input = {1,2,3,4,5,6};
+        ArrayList<Integer> inputs = new ArrayList<>(Arrays.asList(input));
+        WinningNumbers winningNumbers = new WinningNumbers(inputs);
+        assertThatThrownBy(() -> winningNumbers.setBonusNumber(50))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 보너스_번호가_중복되는_경우_오류() {
+        Integer[] input = {1,2,3,4,5,6};
+        ArrayList<Integer> inputs = new ArrayList<>(Arrays.asList(input));
+        WinningNumbers winningNumbers = new WinningNumbers(inputs);
+        assertThatThrownBy(() -> winningNumbers.setBonusNumber(1))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
