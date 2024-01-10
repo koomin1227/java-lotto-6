@@ -1,4 +1,4 @@
-package lotto;
+package lotto.Domain;
 
 public class MatchingResult {
     private int matchedCount;

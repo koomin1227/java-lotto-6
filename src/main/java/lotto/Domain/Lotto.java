@@ -1,9 +1,5 @@
 package lotto.Domain;
 
-import lotto.MatchingResult;
-
-import java.util.Comparator;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 

@@ -1,7 +1,6 @@
 package lotto.Domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import lotto.MatchingResult;
 
 import java.util.ArrayList;
 import java.util.List;

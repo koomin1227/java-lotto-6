@@ -2,7 +2,6 @@ package lotto.Domain;
 
 
 import lotto.Constant.LottoPrize;
-import lotto.MatchingResult;
 
 public class WinningResult {
     private final int[] result = new int[5];
