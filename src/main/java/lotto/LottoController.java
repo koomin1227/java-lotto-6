@@ -3,6 +3,7 @@ package lotto;
 import lotto.Domain.Lotto;
 import lotto.Domain.LottoMachine;
 import lotto.Domain.WinningNumbers;
+import lotto.Domain.WinningResult;
 import lotto.Util.Parser;
 import lotto.View.Input;
 import lotto.View.Output;
@@ -17,6 +18,7 @@ public class LottoController {
         createLotto();
         createWinningNumbers();
         createBonusNumber();
+        displayResult();
     }
 
     private void createLotto() {
@@ -58,5 +60,10 @@ public class LottoController {
                 Output.printError(e.getMessage());
             }
         }
+    }
+
+    private void displayResult() {
+        WinningResult winningResult = lottoMachine.calculateWinningResults(winningNumbers);
+        Output.printResult(winningResult);
     }
 }
