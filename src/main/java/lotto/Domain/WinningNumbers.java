@@ -18,4 +18,8 @@ public class WinningNumbers extends Lotto{
         }
         this.bonusNumber = bonusNumber;
     }
+
+    public Number getBonusNumber() {
+        return bonusNumber;
+    }
 }
