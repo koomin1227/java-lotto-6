@@ -1,4 +1,4 @@
-package lotto.Domain;
+package lotto.Util;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
