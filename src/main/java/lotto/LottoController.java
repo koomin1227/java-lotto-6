@@ -1,9 +1,9 @@
 package lotto;
 
 import lotto.Domain.Lotto;
-import lotto.Domain.Number;
-import lotto.Domain.Numbers;
+import lotto.Util.Numbers;
 import lotto.Domain.WinningNumbers;
+import lotto.Util.Parser;
 import lotto.View.Input;
 import lotto.View.Output;
 
@@ -43,8 +43,8 @@ public class LottoController {
     private void createWinningNumbers() {
         while (true) {
             try {
-                ArrayList<String> winningNumbers = Input.inputWinningNumbers();
-                this.winningNumbers = new WinningNumbers(winningNumbers);
+                ArrayList<String> inputs = Input.inputWinningNumbers();
+                this.winningNumbers = new WinningNumbers(Parser.parseIntList(inputs));
                 return;
             } catch (IllegalArgumentException e) {
                 Output.printError(e.getMessage());
@@ -56,7 +56,7 @@ public class LottoController {
         while (true) {
             try {
                 String input = Input.inputBonusNumber();
-                this.winningNumbers.setBonusNumber(input);
+                this.winningNumbers.setBonusNumber(Parser.parseInt(input));
                 return;
             } catch (IllegalArgumentException e) {
                 Output.printError(e.getMessage());
