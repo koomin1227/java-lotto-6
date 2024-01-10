@@ -1,7 +1,7 @@
 package lotto.Domain;
 
 
-import lotto.LottoPrize;
+import lotto.Constant.LottoPrize;
 import lotto.MatchingResult;
 
 public class WinningResult {
@@ -41,6 +41,6 @@ public class WinningResult {
     }
 
     public double getProfit() {
-        return ((double) price / totalProfit) * 100;
+        return ((double) totalProfit / price) * 100;
     }
 }
