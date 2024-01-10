@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class WinningNumbers {
-    private List<Integer> winningNumbers;
+    private final List<Integer> winningNumbers;
     public WinningNumbers(ArrayList<String> winningNumbers) {
         validate(winningNumbers);
         this.winningNumbers = winningNumbers.stream()
@@ -13,6 +13,9 @@ public class WinningNumbers {
                 .collect(Collectors.toList());
     }
     private void validate(ArrayList<String> winningNumbers) {
+        if (winningNumbers.size() != 6) {
+            throw new IllegalArgumentException("6개가 아님");
+        }
         for (String winningNumber : winningNumbers) {
             if (isNumeric(winningNumber)) {
                 throw new IllegalArgumentException("숫자로만 이루어져있지 않음");
@@ -29,5 +32,9 @@ public class WinningNumbers {
     private static boolean isValidLottoNumber(String input) {
         int num = Integer.parseInt(input);
         return num > 0 && num <= 45;
+    }
+
+    public List<Integer> getWinningNumbers() {
+        return winningNumbers;
     }
 }
