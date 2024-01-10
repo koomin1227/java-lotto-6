@@ -14,7 +14,7 @@ public class Input {
         return Integer.parseInt(input);
     }
 
-    public static List<String> inputWinningNumbers() {
+    public static ArrayList<String> inputWinningNumbers() {
         System.out.println("당첨 번호를 입력해 주세요.");
         String input = Console.readLine();
         return new ArrayList<>(Arrays.asList(input.split(",")));
