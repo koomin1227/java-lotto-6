@@ -16,7 +16,7 @@ public class LottoMachine {
         this.count = price / 1000;
     }
 
-    public ArrayList<Lotto> publishLotto(int count) {
+    public ArrayList<Lotto> publishLotto() {
         for (int i = 0; i < count; i++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             lottos.add(new Lotto(numbers));
