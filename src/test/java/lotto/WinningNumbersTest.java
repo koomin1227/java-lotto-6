@@ -1,5 +1,6 @@
 package lotto;
 
+import lotto.Domain.WinningNumbers;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
