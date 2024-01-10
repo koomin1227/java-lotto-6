@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.List;
 
 public class Lotto {
-    private final List<Integer> numbers;
+    protected final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
@@ -13,14 +13,15 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("6개가 아님");
         }
         if (isDouble(numbers)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("숫자가 중복됨");
         }
+        numbers.forEach(Number::validate);
     }
 
-    private boolean isDouble(List<Integer> numbers) {
+    protected boolean isDouble(List<Integer> numbers) {
         HashSet<Integer> numbersSet = new HashSet<>(numbers);
         return numbersSet.size() != numbers.size();
     }
