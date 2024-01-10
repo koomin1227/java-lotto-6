@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 public class WinningNumbers {
     private final List<Integer> winningNumbers;
+    private Number bonusNumber;
     public WinningNumbers(ArrayList<String> winningNumbers) {
         validate(winningNumbers);
         this.winningNumbers = winningNumbers.stream()
@@ -45,5 +46,13 @@ public class WinningNumbers {
 
     public List<Integer> getWinningNumbers() {
         return winningNumbers;
+    }
+
+    public void setBonusNumber(String number) {
+        Number bonusNumber = new Number(number);
+        if (this.winningNumbers.contains(bonusNumber.getNumber())) {
+            throw new IllegalArgumentException("숫자가 중복됨");
+        }
+        this.bonusNumber = bonusNumber;
     }
 }
