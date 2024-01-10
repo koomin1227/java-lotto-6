@@ -1,6 +1,9 @@
 package lotto.Domain;
 
+import lotto.MatchingResult;
+
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 
@@ -30,6 +33,17 @@ public class Lotto {
 
     public List<Integer> getNumbers() {
         return numbers;
+    }
+
+    public MatchingResult getMatchNumber(WinningNumbers winningNumbers) {
+        int matchCount = 0;
+        boolean isBonusMatch = this.numbers.contains(winningNumbers.getBonusNumber().getNumber());
+        for (Integer number : this.numbers) {
+            if (winningNumbers.getNumbers().contains(number)) {
+                matchCount += 1;
+            }
+        }
+        return new MatchingResult(matchCount, isBonusMatch);
     }
 
     // TODO: 추가 기능 구현
